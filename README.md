@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
 
-> A bulletproof URL encoder/decoder that handles **any Unicode character**, emoji, and special characters with RFC 3986 compliance.
+> A bulletproof URL encoder/decoder that handles **any Unicode character**, emoji, and special characters with RFC 3986 compliance generated fully by claude
 
 ## 🌟 Features
 
@@ -268,7 +268,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 📄 License
 
-MIT © [Your Name]
+MIT © Ashutosh Dwivedi
 
 ## 🙏 Acknowledgments
 
@@ -279,7 +279,3 @@ MIT © [Your Name]
 ## 📮 Support
 
 If you have any questions or issues, please [open an issue](https://github.com/yourusername/universal-url-codec/issues) on GitHub.
-
----
-
-Made with ❤️ for the developer community

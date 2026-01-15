@@ -83,8 +83,10 @@ describe('Universal URL Codec', () => {
       const result = encode('Hello-World_123', { strict: true });
       expect(result).toBe('Hello-World_123');
       
-      const specialResult = encode('Hello.World!', { strict: true });
+      // Test that special characters are encoded in strict mode
+      const specialResult = encode('Hello World!', { strict: true });
       expect(specialResult).toContain('%');
+      expect(specialResult).toBe('Hello%20World%21');
     });
 
     it('should throw TypeError for non-string input', () => {

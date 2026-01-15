@@ -77,17 +77,21 @@ export function encode(str: string, options: EncodeOptions = {}): string {
     // Ultra-strict mode: only allow alphanumeric, hyphen, and underscore
     encoded = Array.from(str)
       .map(char => {
-        if (UNRESERVED_CHARS.test(char) || allowedChars.includes(char)) {
+        // Allow only A-Z, a-z, 0-9, -, _, and any explicitly allowed chars
+        if (/[A-Za-z0-9\-_]/.test(char) || allowedChars.includes(char)) {
           return char;
         }
         
-        // Handle multi-byte characters properly
-        const codePoint = char.codePointAt(0);
-        if (codePoint === undefined) return '';
-        
-        // Convert to UTF-8 bytes and percent-encode each
-        const utf8Bytes = encodeURIComponent(char);
-        return utf8Bytes;
+        // Encode everything else - need to apply RFC 3986 encoding too
+        let charEncoded = encodeURIComponent(char);
+        // Apply RFC 3986 encoding for characters that encodeURIComponent misses
+        charEncoded = charEncoded
+          .replace(/!/g, '%21')
+          .replace(/'/g, '%27')
+          .replace(/\(/g, '%28')
+          .replace(/\)/g, '%29')
+          .replace(/\*/g, '%2A');
+        return charEncoded;
       })
       .join('');
   } else {
@@ -177,20 +181,29 @@ export function encodeUrl(url: string): string {
   try {
     const urlObj = new URL(url);
     
-    // Encode each query parameter
-    const params = new URLSearchParams();
+    // Build new query string from decoded parameters
+    const newParams: string[] = [];
     urlObj.searchParams.forEach((value, key) => {
-      params.append(encode(key), encode(value));
+      newParams.push(`${encode(key)}=${encode(value)}`);
     });
     
-    urlObj.search = params.toString();
+    // Reconstruct the URL
+    const base = `${urlObj.protocol}//${urlObj.host}${urlObj.pathname}`;
+    const query = newParams.length > 0 ? `?${newParams.join('&')}` : '';
     
-    // Encode hash if present
+    // Decode hash first to prevent double-encoding, then encode it
+    let hash = '';
     if (urlObj.hash) {
-      urlObj.hash = encode(urlObj.hash.substring(1));
+      try {
+        const decodedHash = decodeURIComponent(urlObj.hash.substring(1));
+        hash = `#${encode(decodedHash)}`;
+      } catch {
+        // If decode fails, just encode the original
+        hash = `#${encode(urlObj.hash.substring(1))}`;
+      }
     }
     
-    return urlObj.toString();
+    return base + query + hash;
   } catch (error) {
     // If URL parsing fails, encode the entire string
     return encode(url);
