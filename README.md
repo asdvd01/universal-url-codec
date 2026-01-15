@@ -3,6 +3,7 @@
 [![npm version](https://img.shields.io/npm/v/universal-url-codec.svg)](https://www.npmjs.com/package/universal-url-codec)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
+[![CI/CD](https://github.com/asdvd01/universal-url-codec/actions/workflows/ci.yml/badge.svg)](https://github.com/asdvd01/universal-url-codec/actions/workflows/ci.yml)
 
 > A bulletproof URL encoder/decoder that handles **any Unicode character**, emoji, and special characters with RFC 3986 compliance generated fully by claude
 
