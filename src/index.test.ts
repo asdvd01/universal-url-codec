@@ -90,9 +90,9 @@ describe('Universal URL Codec', () => {
     });
 
     it('should throw TypeError for non-string input', () => {
-      expect(() => encode(123 as any)).toThrow(TypeError);
-      expect(() => encode(null as any)).toThrow(TypeError);
-      expect(() => encode(undefined as any)).toThrow(TypeError);
+      expect(() => encode(123 as unknown as string)).toThrow(TypeError);
+      expect(() => encode(null as unknown as string)).toThrow(TypeError);
+      expect(() => encode(undefined as unknown as string)).toThrow(TypeError);
     });
 
     it('should handle very long strings', () => {
@@ -154,8 +154,8 @@ describe('Universal URL Codec', () => {
     });
 
     it('should throw TypeError for non-string input', () => {
-      expect(() => decode(123 as any)).toThrow(TypeError);
-      expect(() => decode(null as any)).toThrow(TypeError);
+      expect(() => decode(123 as unknown as string)).toThrow(TypeError);
+      expect(() => decode(null as unknown as string)).toThrow(TypeError);
     });
 
     it('should be inverse of encode', () => {
@@ -202,7 +202,7 @@ describe('Universal URL Codec', () => {
     });
 
     it('should throw TypeError for non-string input', () => {
-      expect(() => encodeUrl(123 as any)).toThrow(TypeError);
+      expect(() => encodeUrl(123 as unknown as string)).toThrow(TypeError);
     });
   });
 

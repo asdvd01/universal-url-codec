@@ -38,11 +38,6 @@ export interface DecodeOptions {
 }
 
 /**
- * Characters that are safe in URLs and don't need encoding (unreserved characters per RFC 3986)
- */
-const UNRESERVED_CHARS = /[A-Za-z0-9\-_.~]/;
-
-/**
  * Encodes a string for safe use in URLs with full Unicode support
  * 
  * This function handles:
