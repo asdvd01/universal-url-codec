@@ -1,0 +1,31 @@
+# Source files
+src/
+
+# Configuration files
+tsconfig.json
+jest.config.js
+.eslintrc.js
+
+# Testing
+*.test.ts
+*.spec.ts
+coverage/
+
+# Development
+.vscode/
+.idea/
+
+# Git
+.git/
+.gitignore
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml
+
+# Documentation (keep README.md)
+docs/
+
+# Logs
+*.log

@@ -1,0 +1,56 @@
+{
+  "name": "universal-url-codec",
+  "version": "1.0.0",
+  "description": "A bulletproof URL encoder/decoder that handles any Unicode character, emoji, and special characters with RFC 3986 compliance",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint src/**/*.ts",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "keywords": [
+    "url",
+    "encode",
+    "decode",
+    "uri",
+    "percent-encoding",
+    "unicode",
+    "emoji",
+    "rfc3986",
+    "url-encoding",
+    "urlencode",
+    "urldecode"
+  ],
+  "author": "Ashutosh Dwivedi",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/asdvd01/universal-url-codec.git"
+  },
+  "bugs": {
+    "url": "https://github.com/asdvd01/universal-url-codec/issues"
+  },
+  "homepage": "https://github.com/asdvd01/universal-url-codec#readme",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "devDependencies": {
+    "@types/jest": "^29.5.11",
+    "@types/node": "^20.10.6",
+    "@typescript-eslint/eslint-plugin": "^6.17.0",
+    "@typescript-eslint/parser": "^6.17.0",
+    "eslint": "^8.56.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.1",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
